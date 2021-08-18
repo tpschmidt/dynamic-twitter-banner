@@ -1,0 +1,48 @@
+service: twitter-banner
+
+frameworkVersion: '2'
+
+custom:
+  appName: twitter-banner
+
+provider:
+  lambdaHashingVersion: 20201221
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+  logRetentionInDays: 7
+
+layers:
+  common:
+    package:
+      artifact: deploy/layer-common.zip
+    name: ${self:custom.appName}-common-layer
+    description: Common dependencies for Lambdas
+    compatibleRuntimes:
+      - nodejs12.x
+    retain: false
+
+package:
+  individually: true
+
+functions:
+  twitterBanner:
+    handler: src/handler.handler
+    package:
+      artifact: deploy/lambda.zip
+    name: ${self:custom.appName}
+    description: Function to regularly update the Twitter banner
+    reservedConcurrency: 1
+    memorySize: 2048
+    timeout: 10
+    layers:
+      - { Ref: CommonLambdaLayer }
+    events:
+      - schedule: rate(1 minute)
+    environment:
+      TWITTER_API_KEY: ${file(creds.json):TWITTER_API_KEY}
+      TWITTER_API_SECRET_KEY: ${file(creds.json):TWITTER_API_SECRET_KEY}
+      TWITTER_API_ACCESS_TOKEN: ${file(creds.json):TWITTER_API_ACCESS_TOKEN}
+      TWITTER_API_ACCESS_SECRET: ${file(creds.json):TWITTER_API_ACCESS_SECRET}
+      TWITTER_HANDLE: ${file(creds.json):TWITTER_HANDLE}
+      MEDIUM_HANDLE: ${file(creds.json):MEDIUM_HANDLE}
