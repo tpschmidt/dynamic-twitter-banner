@@ -63,7 +63,7 @@ async function createBanner(headline) {
         })
     }))
     console.log(`Adding headline...`)
-    banner.print(font, 380, 65, headline);
+    banner.print(font, 180, 65, headline);
     await banner.writeAsync('/tmp/1500x500_final.png');
 }
 
@@ -73,7 +73,7 @@ async function getLatestArticleHeadline() {
     const title = rss.items[0].title
     console.log(`Retrieved headline: ${title}`)
     // add padding left & right to align it properly
-    const padding = ' '.repeat(Math.ceil((60 - title.length) / 2))
+    const padding = ' '.repeat(Math.ceil((80 - title.length) / 2))
     return `${padding}${title}${padding}`;
 }
 
