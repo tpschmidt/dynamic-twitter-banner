@@ -6,6 +6,7 @@ custom:
   appName: twitter-banner
 
 provider:
+  architecture: arm64
   lambdaHashingVersion: 20201221
   name: aws
   runtime: nodejs12.x
@@ -20,6 +21,8 @@ layers:
     description: Common dependencies for Lambdas
     compatibleRuntimes:
       - nodejs12.x
+    compatibleArchitectures:
+      - arm64
     retain: false
 
 package:
@@ -27,7 +30,7 @@ package:
 
 functions:
   twitterBanner:
-    handler: src/handler.handler
+    handler: handler.handler
     package:
       artifact: deploy/lambda.zip
     name: ${self:custom.appName}
@@ -45,4 +48,3 @@ functions:
       TWITTER_API_ACCESS_TOKEN: ${file(creds.json):TWITTER_API_ACCESS_TOKEN}
       TWITTER_API_ACCESS_SECRET: ${file(creds.json):TWITTER_API_ACCESS_SECRET}
       TWITTER_HANDLE: ${file(creds.json):TWITTER_HANDLE}
-      MEDIUM_HANDLE: ${file(creds.json):MEDIUM_HANDLE}

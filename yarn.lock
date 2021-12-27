@@ -3452,6 +3452,11 @@ parseuri@0.0.6:
   resolved "https://registry.yarnpkg.com/parseuri/-/parseuri-0.0.6.tgz#e1496e829e3ac2ff47f39a4dd044b32823c4a25a"
   integrity sha512-AUjen8sAkGgao7UyCX6Ahv0gIK2fABKmYjvP4xmy5JaKvcbTRueIqIPHLAfq30xJddqSE033IOMUSOMCcK3Sow==
 
+pascalcase@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-1.0.0.tgz#d2fd7d73f2969606d2b56e17f5261be41c43c381"
+  integrity sha512-BSExi0rRnCHReJys6NocaK+cfTXNinAegfWBvr0JD3hiaEG7Nuc7r0CIdOJunXrs8gU/sbHQ9dxVAtiVQisjmg==
+
 path-is-absolute@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
@@ -3983,6 +3988,13 @@ semver@^7.3.4, semver@^7.3.5:
   integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
   dependencies:
     lru-cache "^6.0.0"
+
+serverless-plugin-layer-manager@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/serverless-plugin-layer-manager/-/serverless-plugin-layer-manager-1.0.6.tgz#13eb2de11751bb19afe591ec7bc6dea3d70c96ac"
+  integrity sha512-oZVYWNhp60FRnJ965YX/4mRzU9reaC9H5zA1GLLgxmlblUyH0qcNoecd5OGHtuUPwPsc2OWMb5YzJGYAnY9gvQ==
+  dependencies:
+    pascalcase "^1.0.0"
 
 serverless@^2.53.1:
   version "2.53.1"
