@@ -10,7 +10,7 @@ const widthHeightFollowerImage = 150
 const bannerFileName = '1500x500.jpg'
 const maskFileName = 'mask.png'
 const followerPosition = {
-  x: 1370,
+  x: 1385,
   y: 800
 }
 
@@ -77,9 +77,13 @@ async function uploadBanner() {
 }
 
 module.exports.handler = async () => {
-    await getImagesOfLatestFollowers()
-    await createBanner()
-    await uploadBanner()
+    try {
+        await getImagesOfLatestFollowers()
+        await createBanner()
+        await uploadBanner()
+    } catch (error) {
+        console.info(`Could not update banner: ${error}`)
+    }
 }
 
 
