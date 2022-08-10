@@ -3,15 +3,14 @@ const axios = require('axios')
 const fs = require('fs')
 const Jimp = require('jimp')
 const sharp = require('sharp')
-const Feed = require('rss-to-json')
 
 const numberOfFollowers = 3
-const widthHeightFollowerImage = 150
-const bannerFileName = '1500x500.jpg'
+const widthHeightFollowerImage = 75
+const bannerFileName = '1500x500.png'
 const maskFileName = 'mask.png'
 const followerPosition = {
-  x: 1385,
-  y: 800
+  x: 630,
+  y: 370
 }
 
 function getVariable(name) {
